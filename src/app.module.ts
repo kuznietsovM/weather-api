@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { DatabaseModule } from './database/database.module';
 import { ConfigModule } from '@nestjs/config';
 import { typeOrmConfig } from './config/db.config';
 import { appConfigSchema } from './config/config.types';
+import { OpenWeatherMapModule } from './open-weather-map/open-weather-map.module';
+import { openWeatherMapConfig } from './config/open-weather-map.config';
 
 @Module({
   imports: [
@@ -12,14 +12,15 @@ import { appConfigSchema } from './config/config.types';
     ConfigModule.forRoot({
       isGlobal: true,
       ignoreEnvFile: true,
-      load: [typeOrmConfig],
+      load: [typeOrmConfig, openWeatherMapConfig],
       validationSchema: appConfigSchema,
       validationOptions: {
         abortEarly: true
       }
-    })
+    }),
+    OpenWeatherMapModule
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}

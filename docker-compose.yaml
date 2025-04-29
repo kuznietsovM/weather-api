@@ -12,6 +12,9 @@ services:
       DB_PASSWORD: postgres
       DB_DATABASE: weather
       DB_SYNC: true
+
+      # public for testing purposes
+      OPEN_WEATHER_MAP_API_KEY: c09873e716b2b3b712d4245498cea4ee
     volumes:
       - ./src:/app/src
     ports:
