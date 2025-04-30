@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TypedConfigService } from '../config/typed-config.service';
+import { Weather } from 'src/weather/weather.entity';
 
 @Module({
   imports: [
@@ -10,6 +11,7 @@ import { TypedConfigService } from '../config/typed-config.service';
       inject: [ConfigService],
       useFactory: (configService: TypedConfigService) => ({
         ...configService.get('db'),
+        entities: [Weather]
       }),
     }),
   ],

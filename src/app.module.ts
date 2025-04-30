@@ -5,6 +5,7 @@ import { typeOrmConfig } from './config/db.config';
 import { appConfigSchema } from './config/config.types';
 import { OpenWeatherMapModule } from './open-weather-map/open-weather-map.module';
 import { openWeatherMapConfig } from './config/open-weather-map.config';
+import { WeatherModule } from './weather/weather.module';
 
 @Module({
   imports: [
@@ -18,7 +19,8 @@ import { openWeatherMapConfig } from './config/open-weather-map.config';
         abortEarly: true
       }
     }),
-    OpenWeatherMapModule
+    OpenWeatherMapModule,
+    WeatherModule
   ],
   controllers: [],
   providers: [],
