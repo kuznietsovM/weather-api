@@ -6,5 +6,6 @@ export class Weather {
   id: number
 
   @Column({type: 'jsonb'})
+  // I consider this field as any because I store it as a JSON
   data: any
 }

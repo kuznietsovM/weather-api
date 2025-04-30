@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Post, Query, UseInterceptors } from '@nestjs/common';
 import { WeatherParamsDto } from './weather-params.dto';
 import { WeatherService } from './weather.service';
-import { WeatherInterceptor } from './weather.interceptor';
+import { CurrentWeatherInterceptor } from './current-weather.interceptor';
 
 @Controller('weather')
 export class WeatherController {
@@ -16,7 +16,7 @@ export class WeatherController {
   }
 
   @Get()
-  @UseInterceptors(WeatherInterceptor)
+  @UseInterceptors(CurrentWeatherInterceptor)
   async find (
     @Query() query: WeatherParamsDto
   ) {

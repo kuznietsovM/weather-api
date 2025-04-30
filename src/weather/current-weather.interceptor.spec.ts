@@ -1,13 +1,13 @@
 import { CallHandler, ExecutionContext } from '@nestjs/common';
 import { CurrentWeatherResponse } from './current-weather-response.dto';
-import { WeatherInterceptor } from './weather.interceptor';
+import { CurrentWeatherInterceptor } from './current-weather.interceptor';
 import { firstValueFrom, of } from 'rxjs';
 
-describe('WeatherInterceptor', () => {
-  let interceptor: WeatherInterceptor;
+describe('CurrentWeatherInterceptor', () => {
+  let interceptor: CurrentWeatherInterceptor;
 
   beforeEach(() => {
-    interceptor = new WeatherInterceptor()
+    interceptor = new CurrentWeatherInterceptor()
   })
 
   it('should be defined', () => {
