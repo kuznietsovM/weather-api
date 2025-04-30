@@ -3,8 +3,8 @@ import { Injectable, InternalServerErrorException, NotFoundException, Unauthoriz
 import { ConfigService } from '@nestjs/config';
 import { isAxiosError } from 'axios';
 import { firstValueFrom } from 'rxjs';
-import { ConfigType } from 'src/config/config.types';
-import { OpenWeatherMapConfig } from 'src/config/open-weather-map.config';
+import { ConfigType } from '../config/config.types';
+import { OpenWeatherMapConfig } from '../config/open-weather-map.config';
 
 export enum ExcludedFields {
   Current = "current",
@@ -22,8 +22,8 @@ export class OpenWeatherMapService {
     private readonly httpService: HttpService,
     configService: ConfigService<ConfigType>
   ) {
-    const apiToken = configService.get<OpenWeatherMapConfig>('openWeatherMap').apiKey
-    this.origin = `https://api.openweathermap.org/data/3.0/onecall?appid=${apiToken}`
+    const apiKey = configService.get<OpenWeatherMapConfig>('openWeatherMap').apiKey
+    this.origin = `https://api.openweathermap.org/data/3.0/onecall?appid=${apiKey}`
   }
 
   private handleError(e: any) {

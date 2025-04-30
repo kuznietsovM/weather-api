@@ -1,5 +1,5 @@
 import { IsArray, IsEnum, IsLatitude, IsLongitude, IsOptional } from "class-validator"
-import { ExcludedFields } from "src/open-weather-map/open-weather-map.service"
+import { ExcludedFields } from "../open-weather-map/open-weather-map.service"
 
 export class WeatherParamsDto {
   @IsLatitude()

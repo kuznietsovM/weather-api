@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { OpenWeatherMapService } from 'src/open-weather-map/open-weather-map.service';
+import { OpenWeatherMapService } from '../open-weather-map/open-weather-map.service';
 import { Weather } from './weather.entity';
 import { Repository } from 'typeorm';
 import { WeatherParamsDto } from './weather-params.dto';
@@ -21,8 +21,8 @@ export class WeatherService {
   async find(params: WeatherParamsDto) {
     let excludedFieldsString = ''
     if(params.part && params.part.length > 0) {
-      excludedFieldsString = params.part.reduce((acc, curr) => {
-        return acc = acc + `- '${curr}' `
+      excludedFieldsString = params.part.reduce((prev, curr) => {
+        return prev = prev + `- '${curr}' `
       }, excludedFieldsString)
     }
     
